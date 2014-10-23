@@ -1,4 +1,4 @@
-<%-- 
+<%--
 	Document   : app
 	Created on : Oct 19, 2014, 10:17:09 PM
 	Author     : Xan Mead
@@ -28,6 +28,5 @@
 			<input type="submit">
 		</form>
 	<jsp:include page="footer.jsp"/>
-	<p>end</p>
     </body>
 </html>
