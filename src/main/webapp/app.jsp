@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 	String name = request.getParameter("username");
-	if (name != null && !name.equals("");) {
+	if (name != null && !name.equals("")) {
 		name += "'s ";
 	}
 	else {
@@ -22,7 +22,7 @@
 	<title><c:out value="${name}" />Food Dictionary</title>
     </head>
     <body>
-		Enter name:
+		Enter your name:
 		<form method=post action="app.jsp">
 			<input type="text" name="username">
 			<input type="submit">
