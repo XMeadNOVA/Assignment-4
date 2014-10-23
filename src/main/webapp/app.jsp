@@ -27,6 +27,5 @@
 			<input type="text" name="username">
 			<input type="submit">
 		</form>
-	<jsp:include page="footer.jsp"/>
     </body>
 </html>
