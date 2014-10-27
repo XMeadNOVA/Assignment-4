@@ -1,3 +1,5 @@
+package bst;
+
 
 public class BSTNode<T extends Comparable<T>> {
 	private T value;

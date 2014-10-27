@@ -1,24 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Xan Mead - Fall 2014
+ * amm28964@email.vccs.edu
  */
 
-/**
- *
- * @author amm28964
- */
+import linked_list.LinkedList;
+
 public class FoodItem implements Comparable {
 	private String name;
-	private LinkedListNode<String> list;
+	private LinkedList<String> ingredients;
 	
 	public FoodItem(String name) {
 		this.name = name;
-		list = null;
+		ingredients = null;
 	}
 	
 	public String getName() {
 		return name;
+	}
+	
+	public LinkedList<String> getIngredients() {
+		return ingredients;
 	}
 	
 	@Override
