@@ -5,7 +5,6 @@
 
 package adt.bst;
 
-import adt.bst.BSTNode;
 import java.util.Iterator;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
@@ -17,7 +16,25 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	
 	@Override
 	public Iterator<T> iterator() {
-		
+		Iterator<T> it = new Iterator() {
+
+			@Override
+			public boolean hasNext() {
+				throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+			}
+
+			@Override
+			public Object next() {
+				throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+			}
+
+			@Override
+			public void remove() {
+				throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+			}
+			
+		};
+		return it;		
 	}
 	
 	

@@ -1,3 +1,5 @@
+package model;
+
 /*
  * Xan Mead - Fall 2014
  * amm28964@email.vccs.edu
