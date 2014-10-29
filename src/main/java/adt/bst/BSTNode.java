@@ -1,4 +1,4 @@
-package bst;
+package adt.bst;
 
 
 public class BSTNode<T extends Comparable<T>> {

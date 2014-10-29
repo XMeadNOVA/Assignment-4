@@ -1,4 +1,4 @@
-package bst;
+package adt.bst;
 
 /*
  * Xan Mead - Fall 2014

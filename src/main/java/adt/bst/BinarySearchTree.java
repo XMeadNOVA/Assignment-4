@@ -3,8 +3,9 @@
  * amm28964@email.vccs.edu
  */
 
-package bst;
+package adt.bst;
 
+import adt.bst.BSTNode;
 import java.util.Iterator;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
@@ -13,7 +14,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	public BinarySearchTree() {
 		this.root = new BSTNode<T>();
 	}
-
+	
 	@Override
 	public Iterator<T> iterator() {
 		

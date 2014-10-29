@@ -3,7 +3,9 @@
  * amm28964@email.vccs.edu
  */
 
-package linked_list;
+package adt.linked_list;
+
+import adt.linked_list.LLNode;
 
 public class LinkedList<T> {
 	private LLNode<T> head;

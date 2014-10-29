@@ -3,7 +3,7 @@
  * amm28964@email.vccs.edu
  */
 
-import linked_list.LinkedList;
+import adt.linked_list.LinkedList;
 
 public class FoodItem implements Comparable {
 	private String name;
