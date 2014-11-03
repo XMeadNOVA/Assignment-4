@@ -90,6 +90,39 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		return found;
 	}
 	
+	private BSTNode<T> recRemove(T element, BSTNode<T> tree) {
+		if (tree == null) {
+			found = false;
+		}
+		else if (element.compareTo(tree.getValue()) > 0) {
+			tree.setLeft(recRemove(element, tree.getLeft()));
+		}
+		else if (element.compareTo(tree.getValue()) < 0) {
+			tree.setRight(recRemove(element, tree.getRight()));
+		}
+		else {
+			tree = removeNode(tree);
+			found = true;
+		}
+		return tree;
+	}
+	
+	private BSTNode<T> removeNode(BSTNode<T> tree) {
+		T data;
+		if (tree.getLeft() == null) {
+			return tree.getRight();
+		}
+		else if (tree.getRight() == null) {
+			return tree.getLeft();
+		}
+		else {
+			data = getPredecessor(tree.getLeft());
+			tree.setValue(data);
+			tree.setLeft(recRemove(data, tree.getLeft()));
+			return tree;
+		}
+	}
+	
 	@Override
 	public Iterator<T> iterator() {
 		return traversalQueue.iterator();
