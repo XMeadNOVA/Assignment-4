@@ -5,7 +5,6 @@
 
 package adt.queue;
 
-
 import java.util.Iterator;
 import adt.linked_list.LinkedList;
 import java.util.NoSuchElementException;
@@ -41,6 +40,10 @@ public class Queue<T> implements QueueInterface<T>, Iterable<T> {
 	
 	public LinkedList<T> getList() {
 		return list;
+	}
+	
+	public T[] toArray() {
+		return list.toArray();
 	}
 	
 	@Override

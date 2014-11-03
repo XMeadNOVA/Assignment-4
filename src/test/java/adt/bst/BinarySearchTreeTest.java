@@ -1,7 +1,21 @@
 /*
- * Xan Mead - Fall 2014
- * amm28964@email.vccs.edu
+ * Copyright (C) 2014 amm28964
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+
 package adt.bst;
 
 import adt.queue.Queue;
@@ -12,12 +26,15 @@ import junit.framework.TestCase;
  * @author amm28964
  */
 public class BinarySearchTreeTest extends TestCase {
+
 	/**
 	 * Test of getTraversalQueue method, of class BinarySearchTree.
 	 */
 	public void testGetTraversalQueue() {
 		System.out.println("getTraversalQueue");
 		BinarySearchTree<String> instance = new BinarySearchTree<String>();
+		
+		System.out.println("A".compareTo("B") < 0);
 		
 		String[] preorderLetters =  {"H","D","B","A","C","F","E","G","L","J","I","K","N","M","O"}; 
 		String[] inorderLetters =   {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"};

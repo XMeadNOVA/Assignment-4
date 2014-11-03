@@ -108,6 +108,15 @@ public class LinkedList<T> implements Iterable<T> {
 		return value;
 	}
 	
+	public T[] toArray() {
+		Object[] result = new Object[size];
+		int i = 0;
+		for (T e : this) {
+			result[i] = e;
+		}
+		return (T[])result;
+	}
+	
 	public boolean isEmpty() {
 		return size > 0;
 	}
@@ -137,6 +146,11 @@ public class LinkedList<T> implements Iterable<T> {
 				T result = currentNode.getValue();
 				currentNode = currentNode.getLink();
 				return result;
+			}
+
+			@Override
+			public void remove() {
+				throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 			}
 			
 		};

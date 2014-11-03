@@ -12,6 +12,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	private BSTNode<T> root;
 	private Order order;
 	private Queue<T> traversalQueue;
+		
+	/** Used by remove. */
+	private boolean found;
 	
 	public BinarySearchTree() {
 		this.root = new BSTNode<T>(null);
@@ -69,8 +72,22 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		}
 	}
 	
+	public void balance() {
+		resetTraversalQueue(Order.INORDER);
+		Queue<T> build = getTraversalQueue();
+		root = new BSTNode();
+		for (T e : build) {
+			insert(e);
+		}
+	}
+	
 	public void insert(T element) {
 		root.insert(element);
+	}
+	
+	public boolean remove(T element) {
+		root = recRemove(element, root);
+		return found;
 	}
 	
 	@Override

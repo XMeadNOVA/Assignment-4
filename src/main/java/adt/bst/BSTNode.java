@@ -20,10 +20,7 @@ public class BSTNode<T extends Comparable<T>> {
 	
 	/** Node whose value will always be greater than the value of this.*/
 	private BSTNode<T> right;
-	
-	/** The number of nodes to the left minus the number of nodes to the right.*/
-	private int balanceFactor;
-	
+		
 	/**
 	 * Creates an empty node.
 	 * Following instantiation, the value should be set as soon as possible.
@@ -32,7 +29,6 @@ public class BSTNode<T extends Comparable<T>> {
 		this.value = null;
 		this.left = null;
 		this.right = null;
-		this.balanceFactor = 0;
 	}
 	
 	/**
@@ -43,7 +39,6 @@ public class BSTNode<T extends Comparable<T>> {
 		this.value = value;
 		this.left = null;
 		this.right = null;
-		this.balanceFactor = 0;
 	}
 	
 	/** @return value of this node.*/
@@ -60,12 +55,7 @@ public class BSTNode<T extends Comparable<T>> {
 	public BSTNode<T> getLeft() {
 		return left;
 	}
-	
-	/** @return Balance factor of this node.*/
-	public int balanceFactor() {
-		return balanceFactor;
-	}
-	
+		
 	/** @param value new value for the node.*/
 	public void setValue(T value) {
 		this.value = value;
@@ -140,15 +130,14 @@ public class BSTNode<T extends Comparable<T>> {
 	}
 	
 	/**
-	 * Attempts to insert the given element such that the sorted nature of the
-	 * BSTNode is maintained.
+	 * Attempts to insert the given element such that the BSTNode remains ordered.
 	 * @param element value to be inserted.
 	 */
 	public void insert(T element) {
 		if (value == null) {
 			value = element;
 		}
-		else if (value.compareTo(element) < 0) {
+		else if (value.compareTo(element) > 0) {
 			if (left == null) {
 				left = new BSTNode<T>();
 				left.setValue(element);
@@ -156,7 +145,6 @@ public class BSTNode<T extends Comparable<T>> {
 			else {
 				left.insert(element);
 			}
-			balanceFactor++;
 		}
 		else {
 			if (right == null) {
@@ -166,10 +154,9 @@ public class BSTNode<T extends Comparable<T>> {
 			else {
 				right.insert(element);
 			}
-			balanceFactor--;
 		}
 	}
-	
+		
 	@Override
 	public boolean equals(Object other) {
 		return this.value.equals(((BSTNode)other).getValue());

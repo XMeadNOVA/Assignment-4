@@ -1,9 +1,9 @@
-package model;
-
 /*
  * Xan Mead - Fall 2014
  * amm28964@email.vccs.edu
  */
+
+package model;
 
 import adt.linked_list.LinkedList;
 
@@ -22,6 +22,14 @@ public class FoodItem implements Comparable {
 	
 	public LinkedList<String> getIngredients() {
 		return ingredients;
+	}
+	
+	public void addIngredient(String ing) {
+		ingredients.add(ing);
+	}
+	
+	public void removeIngredient(String ing) {
+		ingredients.remove(ing);
 	}
 	
 	@Override
