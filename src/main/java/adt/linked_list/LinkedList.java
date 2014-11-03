@@ -5,9 +5,9 @@
 
 package adt.linked_list;
 
-import adt.linked_list.LLNode;
+import java.util.Iterator;
 
-public class LinkedList<T> {
+public class LinkedList<T> implements Iterable<T> {
 	private LLNode<T> head;
 	private LLNode<T> foot;
 	private int size;
@@ -121,5 +121,23 @@ public class LinkedList<T> {
 			result += "\n";
 		}
 		return result;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		Iterator it = new Iterator() {
+			LLNode<T> currentNode = head;
+			@Override
+			public boolean hasNext() {
+				return currentNode.getLink() != null;
+			}
+
+			@Override
+			public Object next() {
+				
+			}
+			
+		};
+		return it;
 	}
 }

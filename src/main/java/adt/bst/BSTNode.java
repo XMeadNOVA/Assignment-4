@@ -169,4 +169,9 @@ public class BSTNode<T extends Comparable<T>> {
 			balanceFactor--;
 		}
 	}
+	
+	@Override
+	public boolean equals(Object other) {
+		return this.value.equals(((BSTNode)other).getValue());
+	}
 }
