@@ -47,12 +47,14 @@ public class LinkedList<T> {
 	
 	public void addToFront(T value) {
 		this.addToFront(new LLNode<T>(value));
+		size++;
 	}
 	
 	public void addToFront(LLNode<T> node) {
 		LLNode<T> other = head.getLink();
 		head = node;
 		head.setLink(other);
+		size++;
 	}
 	
 	public T get(T query) {
@@ -71,7 +73,7 @@ public class LinkedList<T> {
 	 * @param target Value of the node to be searched for and deleted.
 	 * @return Returns the value of the deleted node if the node is found. Otherwise, returns null.
 	 */
-	public T delete(T target) {
+	public T remove(T target) {
 		LLNode<T> lastNode = null;
 		LLNode<T> currentNode = head;
 		// traverse to end
@@ -99,10 +101,18 @@ public class LinkedList<T> {
 		return null;
 	}
 	
+	public T removeFirst() {
+		T value = head.getValue();
+		head = head.getLink();
+		size--;
+		return value;
+	}
+	
 	public boolean isEmpty() {
 		return size > 0;
 	}
 	
+	@Override
 	public String toString() {
 		String result = "";
 		LLNode<T> currentNode = head;
