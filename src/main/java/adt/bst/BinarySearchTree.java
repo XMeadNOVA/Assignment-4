@@ -6,7 +6,7 @@
 package adt.bst;
 
 import java.util.Iterator;
-import java.util.Queue;
+import adt.queue.Queue;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	private BSTNode<T> root;
@@ -14,8 +14,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	private Queue<T> traversalQueue;
 	
 	public BinarySearchTree() {
-		this.root = new BSTNode<T>();
-		this.order = Order.INORDER;
+		this.root = new BSTNode<T>(null);
+		traversalQueue = new Queue<T>();
+		resetTraversalQueue(Order.INORDER);
 	}
 	
 	public BSTNode<T> getRoot() {
@@ -32,6 +33,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		
 	public void resetTraversalQueue(Order order) {
 		this.order = order;
+		traversalQueue = new Queue<T>();
 		if (order == Order.PREORDER) {
 			preorder(root);
 		}
@@ -45,7 +47,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	
 	private void preorder(BSTNode<T> node) {
 		if (node != null) {
-			traversalQueue.add(node.getValue());
+			traversalQueue.enqueue(node.getValue());
 			preorder(node.getLeft());
 			preorder(node.getRight());
 		}
@@ -54,7 +56,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	private void inorder(BSTNode<T> node) {
 		if (node != null) {
 			inorder(node.getLeft());
-			traversalQueue.add(node.getValue());
+			traversalQueue.enqueue(node.getValue());
 			inorder(node.getRight());
 		}
 	}
@@ -63,7 +65,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		if (node != null) {
 			postorder(node.getLeft());
 			postorder(node.getRight());
-			traversalQueue.add(node.getValue());
+			traversalQueue.enqueue(node.getValue());
 		}
 	}
 	

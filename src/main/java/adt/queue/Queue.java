@@ -1,20 +1,8 @@
 /*
- * Copyright (C) 2014 amm28964
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 2
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ * Xan Mead - Fall 2014
+ * amm28964@email.vccs.edu
  */
+
 package adt.queue;
 
 
@@ -29,11 +17,20 @@ public class Queue<T> implements QueueInterface<T>, Iterable<T> {
 	public Queue() {
 		list = new LinkedList<T>();
 	}
+	
+	public Queue(T[] set) {
+		list = new LinkedList<T>();
+		for (T e : set) {
+			enqueue(e);
+		}
+	}
 
+	@Override
 	public synchronized void enqueue(T element) {
 		list.add(element);
 	}
 	
+	@Override
 	public synchronized T dequeue() throws QueueUnderflowException {
 		try {
 			return list.removeFirst();
@@ -42,6 +39,11 @@ public class Queue<T> implements QueueInterface<T>, Iterable<T> {
 		}
 	}
 	
+	public LinkedList<T> getList() {
+		return list;
+	}
+	
+	@Override
 	public synchronized boolean isEmpty() {
 		return list.isEmpty();
 	}
@@ -50,8 +52,15 @@ public class Queue<T> implements QueueInterface<T>, Iterable<T> {
 		return list.size();
 	}
 	
+	@Override
 	public synchronized Iterator<T> iterator() {
 		return list.iterator();
+	}
+	
+	
+	@Override
+	public boolean equals(Object other) {
+		return list.equals(((Queue)other).getList());
 	}
 }
 

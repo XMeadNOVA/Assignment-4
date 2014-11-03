@@ -129,15 +129,33 @@ public class LinkedList<T> implements Iterable<T> {
 			LLNode<T> currentNode = head;
 			@Override
 			public boolean hasNext() {
-				return currentNode.getLink() != null;
+				return currentNode != null;
 			}
 
 			@Override
 			public Object next() {
-				
+				T result = currentNode.getValue();
+				currentNode = currentNode.getLink();
+				return result;
 			}
 			
 		};
 		return it;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		LinkedList<T> aList = (LinkedList)other;
+		Iterator it1 = this.iterator();
+		Iterator it2 = aList.iterator();
+		while(it1.hasNext() && it2.hasNext()) {
+			if (!it1.next().equals(it2.next())) {
+				return false;
+			}
+		}
+		if (it1.hasNext() != it2.hasNext()) {
+			return false;
+		}
+		return true;
 	}
 }
