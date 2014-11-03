@@ -25,7 +25,7 @@ public class LinkedList<T> {
 	public int size() {
 		return size;
 	}
-
+	
 	public void add(T value) {
 		this.add(new LLNode<T>(value));
 	}
@@ -43,6 +43,16 @@ public class LinkedList<T> {
 			foot = node;
 		}
 		size++;
+	}
+	
+	public void addToFront(T value) {
+		this.addToFront(new LLNode<T>(value));
+	}
+	
+	public void addToFront(LLNode<T> node) {
+		LLNode<T> other = head.getLink();
+		head = node;
+		head.setLink(other);
 	}
 	
 	public T get(T query) {

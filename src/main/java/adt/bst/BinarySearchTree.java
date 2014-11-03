@@ -9,15 +9,19 @@ import java.util.Iterator;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	private BSTNode<T> root;
+	private Order order;
 	
 	public BinarySearchTree() {
 		this.root = new BSTNode<T>();
+		this.order = Order.INORDER;
 	}
 	
 	@Override
 	public Iterator<T> iterator() {
 		Iterator<T> it = new Iterator() {
-
+			
+			Order itOrder = order;
+			
 			@Override
 			public boolean hasNext() {
 				throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
