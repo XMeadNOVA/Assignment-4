@@ -5,9 +5,11 @@
 
 package adt.linked_list;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 
-public class LinkedList<T> implements Iterable<T> {
+public class LinkedList<T> implements Iterable<T>, Serializable {
 	private LLNode<T> head;
 	private LLNode<T> foot;
 	private int size;
@@ -115,6 +117,14 @@ public class LinkedList<T> implements Iterable<T> {
 			result[i] = e;
 		}
 		return (T[])result;
+	}
+	
+	public ArrayList<T> toArrayList() {
+		ArrayList<T> result = new ArrayList<T>(size);
+		for (T e : this) {
+			result.add(e);
+		}
+		return result;
 	}
 	
 	public boolean isEmpty() {

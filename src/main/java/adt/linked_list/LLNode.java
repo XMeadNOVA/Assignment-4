@@ -5,7 +5,9 @@
 
 package adt.linked_list;
 
-public class LLNode<T> {
+import java.io.Serializable;
+
+public class LLNode<T> implements Serializable {
 	private T value;
 	private LLNode<T> link;
 	

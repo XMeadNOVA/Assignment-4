@@ -16,6 +16,7 @@
 		<h3>Action a Food</h3>
 		<form method="POST">
 			Name: <input type="text" value="" name="foodName">
+			<%-- This is where we populate with FoodItem's ingredients. --%>
 			<input type="submit" value="Action"><br>
 			<input type="button" value="Add ingredient" onClick="addInput('fieldSet');">
 			<input type="button" value="Remove ingredient" onClick="removeInput('fieldSet');">

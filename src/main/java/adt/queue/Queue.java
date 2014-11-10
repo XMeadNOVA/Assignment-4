@@ -7,6 +7,7 @@ package adt.queue;
 
 import java.util.Iterator;
 import adt.linked_list.LinkedList;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class Queue<T> implements QueueInterface<T>, Iterable<T> {
@@ -44,6 +45,10 @@ public class Queue<T> implements QueueInterface<T>, Iterable<T> {
 	
 	public T[] toArray() {
 		return list.toArray();
+	}
+	
+	public ArrayList<T> toArrayList() {
+		return list.toArrayList();
 	}
 	
 	@Override

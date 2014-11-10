@@ -6,8 +6,9 @@
 package model;
 
 import adt.linked_list.LinkedList;
+import java.io.Serializable;
 
-public class FoodItem implements Comparable {
+public class FoodItem implements Comparable, Serializable {
 	private String name;
 	private LinkedList<String> ingredients;
 	
