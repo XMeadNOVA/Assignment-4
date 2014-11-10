@@ -5,8 +5,9 @@
 
 package adt.bst;
 
-import java.util.Iterator;
 import adt.queue.Queue;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	private BSTNode<T> root;
@@ -22,6 +23,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		resetTraversalQueue(Order.INORDER);
 	}
 	
+	public int size() {
+		return root.size();
+	}
+	
 	public BSTNode<T> getRoot() {
 		return root;
 	}
@@ -33,7 +38,15 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	public Queue<T> getTraversalQueue() {
 		return traversalQueue;
 	}
-		
+	
+	/** @return depth of a balanced reconstruction of this tree.*/
+	public int getOptimalDepth() {
+		int depth;
+		int size = size();
+		for (depth = 0; size < Math.pow(2,depth+1); depth++);
+		return depth;
+	}
+	
 	public void resetTraversalQueue(Order order) {
 		this.order = order;
 		traversalQueue = new Queue<T>();
@@ -75,21 +88,55 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	public void balance() {
 		resetTraversalQueue(Order.INORDER);
 		Queue<T> build = getTraversalQueue();
-		root = new BSTNode();
+		ArrayList<T> nodes = new ArrayList<T>(size());
 		for (T e : build) {
-			insert(e);
+			nodes.add(e);
+		}
+		root = new BSTNode();
+		recBalance(0, nodes.size()-1, nodes);
+	}
+	
+	private void recBalance(int low, int high, ArrayList<T> nodes) {
+		if (low == high) {
+			root.insert(nodes.get(low));
+		}
+		else if (low + 1 == high) {
+			root.insert(nodes.get(low));
+			root.insert(nodes.get(high));
+		}
+		else {
+			int mid = (high + low)/2;
+			root.insert(nodes.get(mid));
+			recBalance(low, mid-1, nodes);
+			recBalance(mid+1, high, nodes);
 		}
 	}
 	
+	/**
+	 * Inserts an element into the BST.
+	 * The tree does not necessarily remain balanced.
+	 * @param element 
+	 */
 	public void insert(T element) {
 		root.insert(element);
 	}
-	
+	/**
+	 * Searches for and removes a node, replacing the removed node with its
+	 * logical predecessor.
+	 * @param element value to be searched for
+	 * @return true if the value is found and successfully removed; otherwise, false.
+	 */
 	public boolean remove(T element) {
 		root = recRemove(element, root);
 		return found;
 	}
 	
+	/**
+	 * Recursive method that directs the search for an element in a subtree.
+	 * @param element value to be searched for
+	 * @param tree subtree in which to search
+	 * @return the altered subtree
+	 */
 	private BSTNode<T> recRemove(T element, BSTNode<T> tree) {
 		if (tree == null) {
 			found = false;
@@ -107,6 +154,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		return tree;
 	}
 	
+	/**
+	 * Removes a node and replaces it with its logical predecessor.
+	 * @param tree node to be removed
+	 * @return the altered subtree
+	 */
 	private BSTNode<T> removeNode(BSTNode<T> tree) {
 		T data;
 		if (tree.getLeft() == null) {
@@ -121,6 +173,17 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 			tree.setLeft(recRemove(data, tree.getLeft()));
 			return tree;
 		}
+	}
+	
+	/**
+	 * @param tree node whose rightmost child is sought
+	 * @return the value of the rightmost node in the tree
+	 */
+	private T getPredecessor(BSTNode<T> tree) {
+		while (tree.getRight() != null) {
+			tree = tree.getRight();
+		}
+		return tree.getValue();
 	}
 	
 	@Override
