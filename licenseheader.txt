@@ -1,0 +1,7 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Xan Mead - Fall 2014${licensePrefix}amm28964@email.vccs.edu
+<#if licenseLast??>
+${licenseLast}
+</#if>

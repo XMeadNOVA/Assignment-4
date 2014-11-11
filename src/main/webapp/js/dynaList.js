@@ -1,7 +1,6 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Xan Mead - Fall 2014
+ * amm28964@email.vccs.edu
  */
 
 var counter = 0;
