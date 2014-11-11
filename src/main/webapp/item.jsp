@@ -17,8 +17,8 @@ amm28964@email.vccs.edu
 		<script src="./js/dynaList.js" language="Javascript" type="text/javascript"></script>
     </head>
     <body>
-		<h3>Action a Food</h3>
-		<form method="POST">
+		<h3><%= request.getAttribute("action")%> a Food</h3>
+		<form method="POST" action="add.jsp">
 			Name: <input type="text" value="" name="foodName">
 			<%-- This is where we populate with FoodItem's ingredients. --%>
 			<input type="submit" value="Action"><br>

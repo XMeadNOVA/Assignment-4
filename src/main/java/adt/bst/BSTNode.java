@@ -11,7 +11,7 @@ package adt.bst;
  * @author Xan Mead
  * @param <T> Type of object to be stored in the value field that must be comparable.
  */
-public class BSTNode<T extends Comparable<T>> {
+public class BSTNode<T extends Comparable> {
 	/** Value of type T contained within this node.*/
 	private T value;
 	
