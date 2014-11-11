@@ -39,12 +39,26 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		return traversalQueue;
 	}
 	
-	/** @return depth of a balanced reconstruction of this tree.*/
-	public int getOptimalDepth() {
-		int depth;
+	/** @return height of the ideal construction of this tree.*/
+	public int optimalHeight() {
 		int size = size();
-		for (depth = 0; size < Math.pow(2,depth+1); depth++);
-		return depth;
+		if (size == 0) {
+			return 0;
+		}
+		return (int) (Math.log(size)/Math.log(2));
+	}
+	
+	public int height() {
+		return Math.max(findHeight(root.getLeft()), findHeight(root.getRight()));
+	}
+	
+	private int findHeight(BSTNode<T> tree) {
+		if (tree == null) {
+			return 0;
+		}
+		int leftHeight = findHeight(tree.getLeft());
+		int rightHeight = findHeight(tree.getRight());
+		return Math.max(leftHeight, rightHeight) + 1;
 	}
 	
 	public void resetTraversalQueue(Order order) {

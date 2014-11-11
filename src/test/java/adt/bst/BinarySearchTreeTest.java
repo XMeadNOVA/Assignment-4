@@ -20,8 +20,6 @@ public class BinarySearchTreeTest extends TestCase {
 		System.out.println("getTraversalQueue");
 		BinarySearchTree<String> instance = new BinarySearchTree<String>();
 		
-		System.out.println("A".compareTo("B") < 0);
-		
 		String[] preorderLetters =  {"H","D","B","A","C","F","E","G","L","J","I","K","N","M","O"}; 
 		String[] inorderLetters =   {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"};
 		String[] postorderLetters = {"A","C","B","E","G","F","D","I","K","J","M","O","N","L","H"};
@@ -47,5 +45,29 @@ public class BinarySearchTreeTest extends TestCase {
 		expResult = new Queue<String>(postorderLetters);
 		result = instance.getTraversalQueue();
 		assertEquals(expResult, result);
+	}
+	
+	/**
+	 * Test of height and optimalHeight methods, of class BinarySearchTree
+	 */
+	public void testHeight() {
+		System.out.println("height");
+		String[] letters = {"A","C","B","E","G","F","D","I","K","J","M","O","N","L","H"};
+		
+		// Initialize BST
+		BinarySearchTree<String> instance = new BinarySearchTree<String>();
+		for (String s : letters) {
+			instance.insert(s);
+		}
+		
+		// Test height method
+		int expResult = 8;
+		int result = instance.height();
+		assertEquals("Tree height should be 8", expResult, result);
+		
+		// Test optimal height method
+		expResult = 3;
+		result = instance.optimalHeight();
+		assertEquals("Optimal height should be three", expResult, result);
 	}
 }

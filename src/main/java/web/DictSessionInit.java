@@ -43,6 +43,7 @@ public class DictSessionInit extends HttpServlet {
 		session.setAttribute("dictionary", bst);
 		request.setAttribute("action", "Add");
 		
+		// Forward to add view
 		RequestDispatcher view = request.getRequestDispatcher("item.jsp");
 		view.forward(request, response);
 	}

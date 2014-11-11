@@ -11,7 +11,7 @@ function addInput(divName){
 	}
 	else {
 		var newdiv = document.createElement('div');
-		newdiv.innerHTML = "Ingredient " + (counter + 1) + " <br><input type='text' name='myInputs[]'>";
+		newdiv.innerHTML = "Ingredient " + (counter + 1) + "<br><input type='text' name='ingredients'>";
 		document.getElementById(divName).appendChild(newdiv);
 		counter++;
 	}
