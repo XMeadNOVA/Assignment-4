@@ -9,6 +9,14 @@ import adt.queue.Queue;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * A binary search tree is a tree in which any node can have a maximum of two
+ * children. In accordance with the specification, all children to the left of
+ * any given parent have a value less than that of said parent and all children
+ * to the right have a value greater that that of the parent.
+ * @author Xan Mead
+ * @param <T> Any comparable class.
+ */
 public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	private BSTNode<T> root;
 	private Order order;
@@ -17,24 +25,29 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	/** Used by remove. */
 	private boolean found;
 	
+	/** Creates an empty binary search tree and sets the traversal order to INORDER. */
 	public BinarySearchTree() {
 		this.root = new BSTNode<T>(null);
 		traversalQueue = new Queue<T>();
 		resetTraversalQueue(Order.INORDER);
 	}
 	
+	/** @return number of elements in this tree */
 	public int size() {
 		return root.size();
 	}
 	
+	/** @return the root node of the tree. */
 	public BSTNode<T> getRoot() {
 		return root;
 	}
 	
+	/** @return the current traversal order. */
 	public Order getOrder() {
 		return order;
 	}
 	
+	/** @return the traversal queue generated at the last call to resetTraversalQueue */
 	public Queue<T> getTraversalQueue() {
 		return traversalQueue;
 	}
@@ -48,10 +61,16 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		return (int) (Math.log(size)/Math.log(2));
 	}
 	
+	/** @return actual maximum height of the tree. */
 	public int height() {
 		return Math.max(findHeight(root.getLeft()), findHeight(root.getRight()));
 	}
 	
+	/**
+	 * Recursive helper method for height().
+	 * @param tree Node from which to continue the measurement.
+	 * @return Height of the tallest branch extending from this node
+	 */
 	private int findHeight(BSTNode<T> tree) {
 		if (tree == null) {
 			return 0;
@@ -61,6 +80,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		return Math.max(leftHeight, rightHeight) + 1;
 	}
 	
+	/**
+	 * Reestablishes the traversal queue in a given order.
+	 * @param order Order in which the traversal queue should be populated.
+	 */
 	public void resetTraversalQueue(Order order) {
 		this.order = order;
 		traversalQueue = new Queue<T>();
@@ -75,6 +98,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		}
 	}
 	
+	/**
+	 * Recursive method to establish a preorder traversal.
+	 * @param node Node form which to continue the traversal.
+	 */
 	private void preorder(BSTNode<T> node) {
 		if (node != null) {
 			traversalQueue.enqueue(node.getValue());
@@ -83,6 +110,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		}
 	}
 	
+	/**
+	 * Recursive method to establish an inorder traversal.
+	 * @param node Node form which to continue the traversal.
+	 */
 	private void inorder(BSTNode<T> node) {
 		if (node != null) {
 			inorder(node.getLeft());
@@ -91,6 +122,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		}
 	}
 	
+	/**
+	 * Recursive method to establish a postorder traversal.
+	 * @param node Node form which to continue the traversal.
+	 */
 	private void postorder(BSTNode<T> node) {
 		if (node != null) {
 			postorder(node.getLeft());
@@ -99,6 +134,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		}
 	}
 	
+	/**
+	 * This method resets the traversal queue to INORDER.
+	 * The resulting queue is used to recreate a balanced version of the tree.
+	 */
 	public void balance() {
 		resetTraversalQueue(Order.INORDER);
 		Queue<T> build = getTraversalQueue();
@@ -110,6 +149,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		recBalance(0, nodes.size()-1, nodes);
 	}
 	
+	/**
+	 * Recursive helper method for balance().
+	 * @param low Lower bound for this interval.
+	 * @param high Upper bound for this interval.
+	 * @param nodes Set of nodes to use in reinstantiation.
+	 */
 	private void recBalance(int low, int high, ArrayList<T> nodes) {
 		if (low == high) {
 			root.insert(nodes.get(low));

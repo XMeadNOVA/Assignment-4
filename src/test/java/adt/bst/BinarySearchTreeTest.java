@@ -51,7 +51,7 @@ public class BinarySearchTreeTest extends TestCase {
 	 * Test of height and optimalHeight methods, of class BinarySearchTree
 	 */
 	public void testHeight() {
-		System.out.println("height");
+		System.out.println("height/optimal height");
 		String[] letters = {"A","C","B","E","G","F","D","I","K","J","M","O","N","L","H"};
 		
 		// Initialize BST
@@ -69,5 +69,56 @@ public class BinarySearchTreeTest extends TestCase {
 		expResult = 3;
 		result = instance.optimalHeight();
 		assertEquals("Optimal height should be three", expResult, result);
+	}
+	
+	/**
+	 * Test of the insert method, of class BinarySearchTree
+	 */
+	public void testInsert() {
+		System.out.print("insertion");
+		String[] letters = {"A","C","B","E","G","F","D","I","K","J","M","O","N","L","H"};
+				
+		// Initialize BST
+		BinarySearchTree<String> instance = new BinarySearchTree<String>();
+		for (String s : letters) {
+			instance.insert(s);
+		}
+		
+		instance.insert("Go");
+		instance.insert("Domo");
+		instance.insert("Kappa");
+		instance.insert("Abe");
+		
+		String[] insertedSet = {"A","Abe","B","C","D","Domo","E","F","G","Go","H","I","J","K","Kappa","L","M","N","O"};
+		
+		instance.resetTraversalQueue(Order.INORDER);
+		Queue<String> result = instance.getTraversalQueue();
+		Queue<String> expResult = new Queue<String>(insertedSet);
+		assertEquals(expResult, result);
+	}
+	
+	/**
+	 * Test of the remove method, of class BinarySearchTree
+	 */
+	public void testRemove() {
+		String[] set = {"A","Abe","B","C","D","Domo","E","F","G","Go","H","I","J","K","Kappa","L","M","N","O"};
+		String[] cutSet = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"};
+		
+		// Initialize BST
+		BinarySearchTree<String> instance = new BinarySearchTree<String>();
+		for (String s : set) {
+			instance.insert(s);
+		}
+		
+		instance.remove("Domo");
+		instance.remove("Go");
+		instance.remove("Kappa");
+		instance.remove("Abe");
+		
+		Queue<String> expResult = new Queue<String>(cutSet);
+		instance.resetTraversalQueue(Order.INORDER);
+		Queue<String> result = instance.getTraversalQueue();
+		
+		assertEquals(expResult, result);
 	}
 }

@@ -19,7 +19,7 @@ public class FoodItem implements Comparable<FoodItem>, Serializable {
 	
 	/**
 	 * Creates a new FoodItem with no ingredients.
-	 * @param name 
+	 * @param name Name of the FoodItem
 	 */
 	public FoodItem(String name) {
 		this.name = name;
