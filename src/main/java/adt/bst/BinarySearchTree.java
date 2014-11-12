@@ -183,11 +183,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	/**
 	 * Inserts an element into the BST.
 	 * The tree does not necessarily remain balanced.
-	 * @param element 
+	 * @param element Element to be inserted.
 	 */
 	public void insert(T element) {
 		root.insert(element);
 	}
+	
 	/**
 	 * Searches for and removes a node, replacing the removed node with its
 	 * logical predecessor.
