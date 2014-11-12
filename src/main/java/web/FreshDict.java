@@ -28,6 +28,7 @@ public class FreshDict extends HttpServlet {
 		
 		request.setAttribute("action", "Add");
 		RequestDispatcher view = request.getRequestDispatcher("item.jsp");
+		view.forward(request, response);
 	}
 	
 }
