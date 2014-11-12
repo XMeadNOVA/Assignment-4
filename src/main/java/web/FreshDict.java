@@ -30,5 +30,4 @@ public class FreshDict extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("item.jsp");
 		view.forward(request, response);
 	}
-	
 }

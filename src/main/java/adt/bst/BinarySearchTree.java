@@ -210,10 +210,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 		if (tree == null) {
 			found = false;
 		}
-		else if (element.compareTo(tree.getValue()) > 0) {
+		else if (element.compareTo(tree.getValue()) < 0) {
 			tree.setLeft(recRemove(element, tree.getLeft()));
 		}
-		else if (element.compareTo(tree.getValue()) < 0) {
+		else if (element.compareTo(tree.getValue()) > 0) {
 			tree.setRight(recRemove(element, tree.getRight()));
 		}
 		else {

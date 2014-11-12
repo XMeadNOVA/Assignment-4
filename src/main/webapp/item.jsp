@@ -27,6 +27,10 @@
 				ingredientList = "<div>Ingredient " + count + "<br><input type='text' value='" + i + "' name='ingredients'><div>";
 			}
 		}
+		String action = "Add";
+		if (request.getAttribute("action") != null) {
+			action = (String) request.getAttribute("action");
+		}
 	%>
 <html>
     <head>
