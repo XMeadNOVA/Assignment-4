@@ -54,7 +54,9 @@ public class DictModification extends HttpServlet {
 				FoodItem item = new FoodItem(foodName);
 				String[] ingredients = request.getParameterValues("ingredients");
 				for (String i : ingredients) {
-					item.addIngredient(i);
+					if (i != null) {
+						item.addIngredient(i);
+					}
 				}
 				
 				// Insert the item
