@@ -62,6 +62,7 @@ public class DictModification extends HttpServlet {
 				
 				// Forward to search page
 				request.setAttribute("message", "Item added successfully...");
+				request.getRequestDispatcher("search.jsp").forward(request, response);
 			}
 		}
 	}

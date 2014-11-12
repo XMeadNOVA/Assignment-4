@@ -20,12 +20,19 @@ public class FreshDict extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		// Get the session if it exists
 		HttpSession session = request.getSession(false);
+		
+		// Try to invalidate
 		if (session != null) {
 			session.invalidate();
 		}
+		
+		// Start a new session
 		request.getSession();
 		
+		// Send to add page
 		request.setAttribute("action", "Add");
 		RequestDispatcher view = request.getRequestDispatcher("item.jsp");
 		view.forward(request, response);
