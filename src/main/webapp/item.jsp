@@ -34,7 +34,7 @@
 		<title>Food Dictionary</title>
 		<script src="./js/dynaList.js" language="Javascript" type="text/javascript"></script>
 		<script language="Javascript" type="text/javascript">
-			<%="count = " + count + ";"%>
+			<%="counter = " + count + ";"%>
 		</script>
     </head>
     <body>

@@ -127,6 +127,15 @@ public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
 	}
 	
 	/**
+	 * Retrieves an element from the BST.
+	 * @param query Element to be retrieved.
+	 * @return If found, the element; otherwise returns null.
+	 */
+	public T get(T query) {
+		return root.get(query);
+	}
+	
+	/**
 	 * Inserts an element into the BST.
 	 * The tree does not necessarily remain balanced.
 	 * @param element 

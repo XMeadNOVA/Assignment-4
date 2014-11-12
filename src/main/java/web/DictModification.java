@@ -33,9 +33,21 @@ public class DictModification extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
+		HttpSession session = request.getSession();
+		BinarySearchTree<FoodItem> dict = (BinarySearchTree<FoodItem>) session.getAttribute("dictionary");
 		
+		// EDIT a food item
+		if (action.equals("Edit")) {
+			// Attempt to find the item
+			String foodName = request.getParameter("query");
+			FoodItem result = dict.get(new FoodItem(foodName));
+			if (result != null) {
+				
+				
+			}
+		}
 		// ADD a food item
-		if (action.equals("add")) {
+		if (action.equals("Add")) {
 			String foodName = request.getParameter("foodName");
 			if (!foodName.equals("")) {
 				// Create FoodItem
@@ -44,10 +56,12 @@ public class DictModification extends HttpServlet {
 				for (String i : ingredients) {
 					item.addIngredient(i);
 				}
-				// Get the session dictionary
-				HttpSession session = request.getSession();
-				BinarySearchTree<FoodItem> dict = (BinarySearchTree<FoodItem>) session.getAttribute("dictionary");
+				
+				// Insert the item
 				dict.insert(item);
+				
+				// Forward to search page
+				request.setAttribute("message", "Item added successfully...");
 			}
 		}
 	}

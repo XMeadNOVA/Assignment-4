@@ -2,12 +2,13 @@
 <web-app metadata-complete="false" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<servlet>
 		<servlet-name>SessionInitializer</servlet-name>
-		<servlet-class>web.DictSessionInit</servlet-class>
+		<servlet-class>web.FreshDict</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SessionInitializer</servlet-name>
 		<url-pattern>/NewDict.do</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>DictSaver</servlet-name>
 		<servlet-class>web.DictSessionSave</servlet-class>
@@ -16,6 +17,7 @@
 		<servlet-name>DictSaver</servlet-name>
 		<url-pattern>/SaveDict.do</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>DictModifier</servlet-name>
 		<servlet-class>web.DictModification</servlet-class>
@@ -23,7 +25,15 @@
 	<servlet-mapping>
 		<servlet-name>DictModifier</servlet-name>
 		<url-pattern>/Food.do</url-pattern>
+		<url-pattern>/GetFood.do</url-pattern>
 	</servlet-mapping>
+	
+	<listener>
+		<listener-class>
+			web.DictSessionInit
+		</listener-class>
+	</listener>
+	
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
