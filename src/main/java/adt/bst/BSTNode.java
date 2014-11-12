@@ -113,6 +113,9 @@ public class BSTNode<T extends Comparable> {
 	 * @return If it is found, the queried element, otherwise null;
 	 */
 	public T get(T element) {
+		if (value == null) {
+			return null;
+		}
 		if (value.compareTo(element) == 0) {
 			return value;
 		}

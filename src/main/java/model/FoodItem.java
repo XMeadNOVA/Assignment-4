@@ -23,7 +23,7 @@ public class FoodItem implements Comparable<FoodItem>, Serializable {
 	 */
 	public FoodItem(String name) {
 		this.name = name;
-		ingredients = null;
+		ingredients = new LinkedList<String>();
 	}
 	/** @return name of the food*/
 	public String getName() {

@@ -30,6 +30,11 @@
 		String action = "Add";
 		if (request.getAttribute("action") != null) {
 			action = (String) request.getAttribute("action");
+			System.out.println("attr: " + action);
+		}
+		else if (request.getParameter("action") != null) {
+			action = request.getParameter("action");
+			System.out.println("para: " + action);
 		}
 	%>
 <html>
@@ -42,10 +47,10 @@
 		</script>
     </head>
     <body>
-		<h1><%=request.getAttribute("action")%> a Food</h1>
+		<h1><%=action%> a Food</h1>
 		<p>OR <a href="search.jsp">search</a> your dictionary.</p>
 		<form method="POST" action="Food.do">
-			<input type="hidden" name="action" value="<%=request.getAttribute("action")%>">
+			<input type="hidden" name="action" value="<%=action%>">
 			Name: <input type="text" value="<%=foodName%>" name="foodName">
 			<input type="submit" value="Go"><br>
 			<input type="button" value="Add ingredient" onClick="addInput('fieldSet');">

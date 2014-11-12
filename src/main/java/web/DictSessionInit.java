@@ -21,6 +21,7 @@ public class DictSessionInit implements HttpSessionListener {
 		HttpSession session = hse.getSession();
 		BinarySearchTree<FoodItem> bst = new BinarySearchTree<FoodItem>();
 		session.setAttribute("dictionary", bst);
+		System.out.println("Dict initialized...");
 	}
 
 	@Override

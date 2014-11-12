@@ -25,6 +25,15 @@
 	<servlet-mapping>
 		<servlet-name>DictModifier</servlet-name>
 		<url-pattern>/Food.do</url-pattern>
+		<url-pattern>/DropFood.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>DictResults</servlet-name>
+		<servlet-class>web.DictDisplay</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DictResults</servlet-name>
 		<url-pattern>/GetFood.do</url-pattern>
 	</servlet-mapping>
 	
